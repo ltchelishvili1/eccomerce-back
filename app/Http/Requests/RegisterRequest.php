@@ -7,10 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 class RegisterRequest extends FormRequest
 {
 	/**
-	 * Determine if the user is authorized to make this request.
-	 */
-
-	/**
 	 * Get the validation rules that apply to the request.
 	 *
 	 * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
@@ -22,6 +18,19 @@ class RegisterRequest extends FormRequest
 			'email'          => 'required|email|max:255|unique:users,email',
 			'password'       => 'required|min:3|max:255',
 			'repeat_password'=> 'required|same:password',
+		];
+	}
+
+	/**
+	 * Get custom attributes for validation.
+	 *
+	 * @return array
+	 */
+	public function attributes()
+	{
+		return [
+			'username' => __('attributes.username'),
+			'email'    => __('attributes.email'),
 		];
 	}
 }

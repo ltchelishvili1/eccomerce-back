@@ -31,6 +31,17 @@ class AuthController extends Controller
 		}
 	}
 
+	public function logut(): JsonResponse
+	{
+		auth()->user()->logout;
+
+		request()->session()->invalidate();
+
+		request()->session()->regenerateToken();
+
+		return response()->json(['message' => __('validation.logged_out')])->withCookie(cookie()->forget('XSRF-TOKEN'));
+	}
+
 	public function register(RegisterRequest $request): JsonResponse
 	{
 		$validated = $request->validated();
