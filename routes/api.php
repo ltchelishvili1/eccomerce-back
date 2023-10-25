@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('set-language/{language}', [LanguageController::class, 'setLanguage'])->name('set-language');
 
 Route::controller(AuthController::class)->group(function () {
-	Route::post('/login', 'login')->name('auth.login');
+	Route::post('/login', 'login')->middleware('ensure.email.verified')->name('auth.login');
 	Route::post('/register', 'register')->name('auth.register');
 });
 
