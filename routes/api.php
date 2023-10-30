@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailVerifyController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\OAuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -39,3 +40,8 @@ Route::middleware('auth:sanctum')->group(
 		Route::get('/logout', [AuthController::class, 'logut'])->name('auth.logout');
 	}
 );
+
+Route::controller(OAuthController::class)->group(function () {
+	Route::get('/auth/google', 'redirect')->name('google.auth');
+	Route::get('auth/google-callback', 'callbackGoogle')->name('google.callback');
+});
