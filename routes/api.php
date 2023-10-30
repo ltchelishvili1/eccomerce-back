@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmailVerifyController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('set-language/{language}', [LanguageController::class, 'setLanguage'])->name('set-language');
+Route::get('/email/verify/{id}/{hash}', [EmailVerifyController::class, 'emailVerify'])->name('verification.verify');
 
 Route::controller(AuthController::class)->group(function () {
 	Route::post('/login', 'login')->middleware('ensure.email.verified')->name('auth.login');
