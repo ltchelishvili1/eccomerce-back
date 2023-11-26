@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailVerifyController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\OAuthController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,4 +45,10 @@ Route::middleware('auth:sanctum')->group(
 Route::controller(OAuthController::class)->group(function () {
 	Route::get('/auth/google', 'redirect')->name('google.auth');
 	Route::get('auth/google-callback', 'callbackGoogle')->name('google.callback');
+});
+
+Route::controller(ResetPasswordController::class)->group(function () {
+	Route::post('/forgot-password', 'resetPassword')->name('password.reset');
+	Route::post('/reset-password', 'updatePassword')->name('password.change');
+	Route::post('/check-token', 'checkToken')->name('password.checkToken');
 });
