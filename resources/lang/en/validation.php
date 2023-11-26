@@ -39,4 +39,9 @@ return [
 	'encounter_issues'						                => 'If you encounter any issues, please contact our support team.',
 	'lshop_team'							                     => 'LSHOP team',
 	'verification'							                   => 'Email verification',
+	'thanks_for_reset'                      => 'Thanks for using Movie quotes! We really appreciate it. Please click the button below to reset your password:',
+	'reset_password'                        => 'Reset Password',
+	'if_click_fails'                        => "if clicking doesn't work, you can try copying and pasting it to your browser:",
+	'have_any_problems'                     => 'If you have any problems, please contact us: support@lshop.ge',
+	'lshop_crew'                            => 'LSHOP Crew',
 ];
